@@ -1,0 +1,70 @@
+ <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/template/myLayout.xhtml">
+<ui:define name="content">
+    <f:view>
+        <h1>Inscription  </h1>
+        <div id="edition">
+        <h:form>
+            <c:set var="pers" value="#{user_navigation.person}" />
+           
+                    
+            <p:panel header="Formulaire d'inscription ">
+             
+                <h:panelGrid id="addPerson" columns="2">
+                    <h:outputText value="Nom: " />
+                    <p:inputText id="lastName" value="#{pers.lastName}" required="true"></p:inputText>
+                    <p:spacer></p:spacer>
+                    <p:message for="lastName" ></p:message>
+                    
+                    
+                    <h:outputText value="Prenom: " />
+                    <p:inputText id="firstName" value="#{pers.firstName}" required="true"></p:inputText>
+                    <p:spacer></p:spacer>
+                    
+                    <p:message for="firstName" ></p:message>
+                    
+                    <h:outputText value="Mail: " />
+                    <p:inputText id="mail" value="#{pers.mail}" required="true"></p:inputText>
+                    <p:spacer></p:spacer>
+                    <p:message for="mail" ></p:message>
+  
+  					<h:outputText value="webSite " />
+                    <p:inputText id="webSite" value="#{pers.webSite}" ></p:inputText>
+                    <p:spacer></p:spacer>
+                    <p:message for="webSite" ></p:message>
+                    
+                     
+  					<h:outputText  value="Date de naissance" />
+						<p:calendar id="birthday" value="#{pers.birthday}"
+								locale="fr" navigator="true" pattern="yyyy-mm-dd" />
+					<p:message for="birthday" />
+                     
+                     
+                     <p:spacer></p:spacer>
+  					<h:outputText value="password " />
+                    <p:password id="password" value="#{pers.password}" required="true" ></p:password>
+                    <p:spacer></p:spacer>
+                    <p:message for="password" ></p:message>
+                   
+                     
+
+                    <p:commandButton action="#{user_navigation.savePerson}" value="valider" ajax="false" ></p:commandButton>
+                </h:panelGrid>
+                
+       
+            </p:panel>
+        </h:form>
+      </div>
+    </f:view>
+</ui:define>
+</ui:composition>
+
+</html>
+
+ 

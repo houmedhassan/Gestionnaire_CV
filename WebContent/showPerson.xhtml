@@ -1,0 +1,164 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:body>
+<c:choose>
+	
+		<c:when test="#{ empty userConnect.person.idPerson}">
+		 	retour à la page d'accueil <h:commandButton action="home?faces-redirect=true"   value="accueil" />
+		</c:when>
+		<c:otherwise>
+    <ui:composition template="/template/myLayout2.xhtml">
+        <ui:define name="content">
+        
+        <c:set var="pers" value="#{userConnect.person}" /> 
+        
+           <p> <b> Prenom Nom:   <h:outputText value="#{pers.firstName}" />  <h:outputText value=" " />  <h:outputText value="#{pers.lastName}" /></b> </p>
+            <b> Mail: <h:outputText value="#{pers.mail}" />  </b><br/>
+            <b> site web: <h:outputText value="#{pers.webSite}" /> </b><br/>
+            
+            <b>Date de naissance: <h:outputText value="#{pers.birthday}" /> </b><br/>
+         
+            <p></p>
+                 <h3> <h:link outcome="addActivity">Ajouter une Activité</h:link></h3>
+            <p:tabView>
+            	<p:tab title="Formation ">
+            	
+	      			  <h:form >
+						    <c:forEach var="activ"  items="#{userConnect.activities}">
+						    <c:choose>
+							 <c:when  test="#{activ.nature == 'formation'}">
+													 
+							        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+							 			   <div class="lien_header">
+								 		   	<h3>    <h:commandLink action="#{userConnect.editActivity(activ)}"  value="Modifier" /></h3>
+								 		   	<h3>  <h:commandLink action="#"  value="Supprimer" /></h3>
+							 			   </div>
+							 				
+							            <p:outputPanel>
+							                <h:panelGrid columns="2" cellpadding="5">
+							                    <h:outputText value="Année:" />
+							                    <h:outputText value="#{activ.year}" style="font-weight: bold"/>
+							                    
+							 					<h:outputText value="Nature:" />
+							                    <h:outputText value="#{activ.nature}" style="font-weight: bold"/>
+							                    
+							                    <h:outputText value="Titre:" />
+							                    <h:outputText value="#{activ.title}" style="font-weight: bold"/>
+							 
+							                    <h:outputText value="Description:" />
+							                    <h:outputText value="#{activ.description}" style="font-weight: bold"/>
+							                    
+							                    <h:outputText value="Adresse Web:" />
+							                    <h:outputText value="#{activ.webAddress}" style="font-weight: bold"/>
+							                </h:panelGrid>
+							            </p:outputPanel>
+							        </h:panelGrid>
+						        
+						        <hr />
+						        </c:when>
+						       <c:otherwise>
+						       	
+						       </c:otherwise>
+						     </c:choose>
+						    </c:forEach>
+						</h:form>
+            	</p:tab>
+            	<p:tab title="Experiences professionnels ">
+            		   <h:form >
+						    <c:forEach var="activ"  items="#{userConnect.activities}">
+						     <c:choose>
+							 <c:when  test="#{activ.nature == 'experience_professionnel'}">
+						        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+						           
+						 				<div class="lien_header">
+								 		   	<h3>    <h:commandLink action="#{userConnect.modifierActivity(activ)}"  value="Modifier" /></h3>
+								 		   	<h3>  <h:commandLink action="#"  value="Supprimer" /></h3>
+							 			</div>
+						            <p:outputPanel>
+						                <h:panelGrid columns="2" cellpadding="5">
+						                    <h:outputText value="Année:" />
+						                    <h:outputText value="#{activ.year}" style="font-weight: bold"/>
+						                    
+						 					<h:outputText value="Nature:" />
+						                    <h:outputText value="#{activ.nature}" style="font-weight: bold"/>
+						                    
+						                    <h:outputText value="Titre:" />
+						                    <h:outputText value="#{activ.title}" style="font-weight: bold"/>
+						 
+						                    <h:outputText value="Description:" />
+						                    <h:outputText value="#{activ.description}" style="font-weight: bold"/>
+						                    
+						                    <h:outputText value="Adresse Web:" />
+						                    <h:outputText value="#{activ.webAddress}" style="font-weight: bold"/>
+						                </h:panelGrid>
+						            </p:outputPanel>
+						        </h:panelGrid>
+						        
+						        <hr />
+						       </c:when>
+						       <c:otherwise>
+						       
+						       </c:otherwise>
+						     </c:choose>
+						   </c:forEach>
+						</h:form>
+            	</p:tab>
+            	
+            	<p:tab title="Autres ">
+            	 	   <h:form>
+						    <c:forEach var="activ"  items="#{userConnect.activities}">
+						        <c:choose>
+							 <c:when  test="#{activ.nature == 'autre'}">
+													 
+							        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+							 			   <div class="lien_header">
+								 		   	<h3>    <h:commandLink action="#{userConnect.modifierActivity(activ)}"  value="Modifier" /></h3>
+								 		   	<h3>  <h:commandLink action="#"  value="Supprimer" /></h3>
+							 			   </div>
+							 				
+							            <p:outputPanel>
+							                <h:panelGrid columns="2" cellpadding="5">
+							                    <h:outputText value="Année:" />
+							                    <h:outputText value="#{activ.year}" style="font-weight: bold"/>
+							                    
+							 					<h:outputText value="Nature:" />
+							                    <h:outputText value="#{activ.nature}" style="font-weight: bold"/>
+							                    
+							                    <h:outputText value="Titre:" />
+							                    <h:outputText value="#{activ.title}" style="font-weight: bold"/>
+							 
+							                    <h:outputText value="Description:" />
+							                    <h:outputText value="#{activ.description}" style="font-weight: bold"/>
+							                    
+							                    <h:outputText value="Adresse Web:" />
+							                    <h:outputText value="#{activ.webAddress}" style="font-weight: bold"/>
+							                </h:panelGrid>
+							            </p:outputPanel>
+							        </h:panelGrid>
+						        
+						        <hr />
+						        </c:when>
+						       <c:otherwise>
+						     
+						       </c:otherwise>
+						     </c:choose>
+						    </c:forEach>
+						</h:form>
+            	</p:tab>
+            </p:tabView>
+            
+
+           
+        </ui:define>
+        <ui:define name="title">Gestion CVs</ui:define>
+    </ui:composition>
+    </c:otherwise>
+  </c:choose>
+</h:body>
+</html>

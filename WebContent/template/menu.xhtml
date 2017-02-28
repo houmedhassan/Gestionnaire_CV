@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition>
+ <div class="bienvenue">Bienvenue sur l'application ......</div>
+	<p:menubar autoDisplay="false">
+		<p:menuitem value="Accueil" url="home.xhtml?faces-redirect=true"></p:menuitem>				
+		<f:facet name="options">
+			<h:form>
+            <p:inputText style="margin-right:10px" value="#{user_navigation.search}" name="word" placeholder="Recherche "/>
+            <p:commandButton action="#{user_navigation.searchPersonCv()}" value="Rechercher" ajax="false"></p:commandButton>
+            </h:form>
+        </f:facet>
+        <p:menuitem value="s'inscrire" url="ajoutPerson.xhtml?faces-redirect=true"/> 
+        
+	</p:menubar>
+</ui:composition>
+
+</html>

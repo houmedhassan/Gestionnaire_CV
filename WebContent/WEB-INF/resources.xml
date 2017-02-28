@@ -1,0 +1,9 @@
+<resources>
+	<Resource id="myDS" type="DataSource">
+		JdbcDriver com.mysql.jdbc.Driver
+		JdbcUrl jdbc:mysql://dbs-perso.luminy.univmed.fr/h14017993
+		UserName h14017993
+		Password 3AyTHd
+		JtaManaged true
+	</Resource>
+</resources>

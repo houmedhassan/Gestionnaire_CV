@@ -1,0 +1,56 @@
+
+body {
+	background-image:url("../images/img_cv.jpg");
+	background-repeat: no-repeat;
+	
+}
+.ui-menubar {
+    
+    background-color: #00CED1;
+}
+
+.ui-panel {
+    padding: 0.2em;
+    background-color: #66CDAA;
+}
+.ui-tabs.ui-tabs-top > .ui-tabs-nav {
+    padding: .2em .2em 0;
+    background-color: black;
+}
+
+.ui-widget-content a {
+    color: #0000FF;
+}
+
+
+.text-left{
+	float: left;
+}
+#gauche {
+	width: 40%;
+	height: 100%;
+	float: left;
+}
+
+#droite {
+	width: 60%;
+	height: 100%;
+	float: left;
+}
+
+img{
+	height:100%;
+}
+
+#edition  .ui-inputfield{
+width: 500px;
+height: 25px;
+}
+
+#edition .ui-widget-content{
+	width:900px;
+}
+
+.lab{
+	width:300px;
+}

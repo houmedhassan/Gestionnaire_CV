@@ -1,0 +1,67 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:body>
+    <ui:composition template="/template/myLayout2.xhtml">
+        <ui:define name="content">
+      	  <f:view>
+	        <h1>Ajout d'une Activité  </h1>
+	        <div id="edition">
+	        <h:form>
+	            <c:set var="activite" value="#{userConnect.activity}" />
+	           <p:messages id="message" showDetail="true" autoUpdate="true" closable="true" />
+	                    
+	            <p:panel header="Formulaire d'Ajout d'une Activité ">
+	 
+	                 <h:panelGrid id="addAjout" columns="2">
+	                   
+	                   <h:outputText  value="Date " />
+							<p:calendar id="year" value="#{activite.year}"
+									locale="fr" navigator="true" pattern="yyyy-mm-dd" />
+						<p:spacer></p:spacer>
+						<p:message for="year" />
+	                    
+	                   <h:outputText value="Nature " />
+	                   <p:selectOneMenu id="nature" value="#{activite.nature}" style="width:125px" require="true">
+	                   		<f:selectItem itemLabel=" " itemValue="" />
+				            <f:selectItem itemLabel="Formation " itemValue="formation" />
+				            <f:selectItem itemLabel="Experiences professionnels" itemValue="experience_professionnel" />
+				            <f:selectItem itemLabel="Autres " itemValue="autre" />
+					  </p:selectOneMenu>
+					  <p:spacer></p:spacer>
+	                  <p:message for="nature" ></p:message>
+	                                        
+	                  <h:outputText value="Titre " />
+	                  <p:inputText id="title" value="#{activite.title}" required="true"></p:inputText>
+	                  <p:spacer></p:spacer>
+	                  <p:message for="title" ></p:message>
+	                  
+	                  <h:outputText value="Description " />
+	                  <p:inputTextarea rows="50" cols="80" autoResize="false"  value="#{activite.description}" required="true" />
+    				 
+    				  <p:spacer></p:spacer>
+	                  <p:message for="title" ></p:message>
+    
+	                  <h:outputText value="Adresse Web " />
+	                  <p:inputText id="webAddress" value="#{activite.webAddress}" ></p:inputText>
+	                  <p:spacer></p:spacer>
+	                  <p:message for="webAddress" ></p:message>
+	                    
+	                  <p:commandButton action="#{userConnect.saveActivity}" value="valider" ajax="false"></p:commandButton>
+	                </h:panelGrid>
+	                
+	       
+	            </p:panel>
+	        </h:form>
+	      </div>
+	    </f:view>
+        </ui:define>
+        <ui:define name="title">Gestion CVs</ui:define>
+    </ui:composition>
+</h:body>
+</html>
